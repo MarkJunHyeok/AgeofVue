@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Emit</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p> {{num}}</p>
+    <app-header v-on:pass="log"></app-header>
+    <app-content v-on:add="numberLog"></app-content>
+</div>
+
+<script>
+
+    var appHeader = {
+        template: '<button v-on:click="passEvent">click me</button>',
+        methods: {
+            passEvent: function (){
+                this.$emit('pass');
+            }
+        }
+    }
+
+    var appContent = {
+        template: '<button v-on:click="addNumber">add</button>',
+        methods: {
+            addNumber: function (){
+                this.$emit('add');
+            }
+        }
+    }
+
+    new Vue({
+        el: '#app',
+        components: {
+            'app-header': appHeader,
+            'app-content': appContent
+        },
+        methods:{
+            log : function () {
+                console.log("text")
+            },
+            numberLog : function () {
+                this.num += 1
+                console.log(this.num)
+            }
+        },
+        data: {
+            num : 10
+        }
+    })
+</script>
+
+</body>
+</html>
