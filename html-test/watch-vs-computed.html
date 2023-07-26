@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watchVsComputed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{num}}
+    {{doubleNum}}
+    <button v-on:click="addNum">increase</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            num: 10
+        },
+        methods : {
+            addNum: function () {
+                this.num += 1
+            },
+            logNum: function (num) {
+                console.log(num)
+            }
+        },
+        watch: {
+            num : function (newValue, oldValue) {
+                this.logNum(newValue)
+            }
+        },
+        computed: {
+            doubleNum: function () {
+                return this.num * 2
+            }
+        }
+    })
+</script>
+</body>
+</html>
