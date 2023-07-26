@@ -22,6 +22,11 @@
     </div>
     <div v-show="loading"> Loading</div>
     <button v-on:click="check">loading</button>
+
+    <br/>
+    <input type="text" v-model="message" placeholder="edit me">
+    <p>{{message}}</p>
+
 </div>
 
 <script>
@@ -32,6 +37,7 @@
             number: 10,
             name: 'text-blue',
             loading : true,
+            message: ''
         },
         methods: {
           check: function () {
