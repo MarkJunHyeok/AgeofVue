@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computed-usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p v-bind:class="{ warning }">Hello World</p>
+    <button v-on:click="error">button</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isError: false
+        },
+        methods: {
+            error : function () {
+                this.isError = !this.isError
+            }
+        },
+        computed: {
+            warning: function () {
+                return this.isError ? 'warning' : null
+            }
+        }
+    })
+</script>
+</body>
+</html>
