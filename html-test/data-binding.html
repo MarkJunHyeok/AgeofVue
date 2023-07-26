@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataBinding</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .text-blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p v-bind:id="uuid">{{number}}</p>
+    <p v-bind:class="name">{{doubleNum}}</p>
+    <div v-if="loading">
+        Loading...
+    </div>
+    <div v-else>
+        test user has benn logged in
+    </div>
+    <div v-show="loading"> Loading</div>
+    <button v-on:click="check">loading</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            uuid: 'abc1234',
+            number: 10,
+            name: 'text-blue',
+            loading : true,
+        },
+        methods: {
+          check: function () {
+              this.loading = !this.loading
+          }
+
+        },
+        computed: {
+            doubleNum: function () {
+                return this.number * 2
+            }
+        }
+
+    })
+</script>
+
+</body>
+</html>
